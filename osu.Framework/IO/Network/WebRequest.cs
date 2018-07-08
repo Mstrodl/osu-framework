@@ -131,7 +131,10 @@ namespace osu.Framework.IO.Network
 
         static WebRequest()
         {
-            client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate });
+            client = new HttpClient(new HttpClientHandler {
+		    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+		    UseCookies = false
+		});
             client.DefaultRequestHeaders.UserAgent.ParseAdd("osu!");
 
             // Timeout is controlled manually through cancellation tokens because
